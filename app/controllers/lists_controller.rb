@@ -10,13 +10,22 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    # @bookmark = Bookmark.find(params[:id])
   end
 
   def create
     @list = List.new(list_params)
-    @list.save
-    # Will raise ActiveModel::ForbiddenAttributesError
-    redirect_to lists_path(@list)
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      render :new
+    end
+  end
+
+  def update
+    @list = List.find(params[:id])
+    @list.update(list_params)
+    redirect_to lists_path
   end
 
   private

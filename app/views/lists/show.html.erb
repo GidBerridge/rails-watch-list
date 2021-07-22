@@ -1,2 +1,15 @@
-<%=<h1>Bookmarks in list #{list.name}</h1> %>
+<h1>Bookmarks in list</h1>
+
 <!-- should show bookmarks in list -->
+
+<h2><%= @list.name %></h2>
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li><%= bookmark.movie.title %>
+    <li><%= bookmark.comment %></li>
+    <li><%= link_to 'Delete bookmark', bookmark_path(bookmark), method: :delete%></li>
+  <% end %>
+</ul>
+<%= link_to 'Add bookmark to list', new_list_bookmark_path(@list) %><br><br>
+
+<%= link_to 'Back to list index', lists_path %>
