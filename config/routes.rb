@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # post 'bookmarks', to: 'bookmarks#create'
   # delete '/bookmarks/:id', to: 'bookmarks#destroy'
 
+  root to: "lists#index"
+
   resources :lists do
     resources :bookmarks, only: [:new, :create]
   end

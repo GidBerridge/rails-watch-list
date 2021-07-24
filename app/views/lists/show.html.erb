@@ -5,11 +5,13 @@
 <h2><%= @list.name %></h2>
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
+    <div class="movie">
     <li><%= bookmark.movie.title %>
     <li><%= bookmark.comment %></li>
-    <li><%= link_to 'Delete bookmark', bookmark_path(bookmark), method: :delete%></li>
+    <button type="button" class="btn btn-success"><%= link_to 'Delete bookmark', bookmark_path(bookmark), method: :delete%></button>
+    </div>
   <% end %>
 </ul>
-<%= link_to 'Add bookmark to list', new_list_bookmark_path(@list) %><br><br>
-
+<%= link_to "Add bookmark to list", new_list_bookmark_path(@list) %><br>
+<%= link_to 'Delete list', list_path(@list), method: :delete%><br>
 <%= link_to 'Back to list index', lists_path %>
