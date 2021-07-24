@@ -1,17 +1,26 @@
-<h1>Bookmarks in list</h1>
+
 
 <!-- should show bookmarks in list -->
-
-<h2><%= @list.name %></h2>
-<ul>
+<div class="container">
+  <h1 class="list-title"><%= @list.name %></h1>
+  <ul>
   <% @list.bookmarks.each do |bookmark| %>
-    <div class="movie">
-    <li><%= bookmark.movie.title %>
-    <li><%= bookmark.comment %></li>
-    <button type="button" class="btn btn-success"><%= link_to 'Delete bookmark', bookmark_path(bookmark), method: :delete%></button>
+  <div class="movie-container">
+    <div class="movie" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url %>)">
+      <div class="movie-title"><%= bookmark.movie.title %></div>
+      <%= link_to bookmark_path(bookmark), method: :delete do %>
+        <div class="bin"><i class="far fa-trash-alt"></i></div>
+      <% end %>
     </div>
-  <% end %>
-</ul>
+    <div><%= bookmark.comment %></div>
+  </div>
+
+
+    <% end %>
+
+  </ul>
+
 <%= link_to "Add bookmark to list", new_list_bookmark_path(@list) %><br>
 <%= link_to 'Delete list', list_path(@list), method: :delete%><br>
 <%= link_to 'Back to list index', lists_path %>
+</div>

@@ -1,6 +1,9 @@
-<h1>Watch Lists</h1>
-<p><% @lists.each do |list| %>
-  <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-  <%= link_to 'Add a new list', new_list_path %>
-</p>
+<div class="container">
+  <h1>Watch Lists</h1>
+    <p class="lists"><% @lists.each do |list| %>
+      <li><%= link_to list.name, list_path(list) %></li>
+      <% end %>
+      <%= link_to 'Add a new list', new_list_path %>
+    </p>
+</div>
+
